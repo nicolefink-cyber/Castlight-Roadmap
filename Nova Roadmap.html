@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Castlight Product Roadmap</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            /* Official Castlight Brand Colors */
+            --cl-navy: #002D72;
+            --cl-teal: #00A3E0;
+            --cl-bg: #F9FAFB;
+            --cl-text: #111827;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--cl-bg);
+            color: var(--cl-text);
+        }
+
+        .portal-header {
+            background: white;
+            border-bottom: 1px solid #E5E7EB;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            padding: 0 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo-img {
+            height: 32px; /* Standard corporate sizing */
+            width: auto;
+        }
+
+        /* Card Flip Logic */
+        .card-container {
+            perspective: 1200px;
+            height: 340px;
+        }
+
+        .card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+            transform-style: preserve-3d;
+            cursor: pointer;
+        }
+
+        .card-container.flipped .card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .card-front, .card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 8px;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            background: white;
+            border: 1px solid #E5E7EB;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+        }
+
+        .card-front {
+            border-top: 5px solid var(--cl-navy);
+        }
+
+        .card-back {
+            transform: rotateY(180deg);
+            justify-content: center;
+            text-align: center;
+            border-top: 5px solid #CBD5E1; 
+        }
+
+        /* Border Color Overrides based on status */
+        .border-released { border-top-color: #10B981 !important; }
+        .border-active { border-top-color: var(--cl-teal) !important; }
+        .border-design { border-top-color: var(--cl-navy) !important; }
+
+        .status-pill {
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 4px 12px;
+            border-radius: 4px; /* Matches corporate block style */
+            width: fit-content;
+            margin-bottom: 1rem;
+        }
+
+        .status-complete { background: #DCFCE7; color: #166534; }
+        .status-active { background: #E0F2FE; color: #0369A1; }
+        .status-next { background: #F1F5F9; color: #475569; }
+
+        .section-header {
+            color: var(--cl-navy);
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .section-header::after {
+            content: "";
+            height: 1px;
+            background: #E5E7EB;
+            flex-grow: 1;
+        }
+
+        .hero-section {
+            background: white;
+            padding: 5rem 2rem;
+            text-align: center;
+            border-bottom: 1px solid #E5E7EB;
+            margin-bottom: 4rem;
+        }
+
+        .text-cl-navy { color: var(--cl-navy); }
+    </style>
+</head>
+<body>
+
+    <header class="portal-header">
+        <div class="w-full max-w-7xl mx-auto">
+            <!-- Official Castlight SVG Logo -->
+            <img src="https://www.castlighthealth.com/wp-content/themes/castlighthealth/assets/img/logo.svg" alt="Castlight Health" class="logo-img">
+        </div>
+    </header>
+
+    <section class="hero-section">
+        <h1 class="text-4xl md:text-5xl font-bold text-cl-navy mb-6 tracking-tight">Product Roadmap</h1>
+        <p class="text-gray-500 max-w-2xl mx-auto text-xl font-light leading-relaxed">
+            Innovating to make healthcare navigation simple, personalized, and transparent for every member.
+        </p>
+    </section>
+
+    <main class="max-w-7xl mx-auto px-8 pb-32">
+
+        <!-- SECTION: RECENTLY RELEASED -->
+        <div class="mb-24">
+            <div class="section-header">Recently Released</div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                
+                <div class="card-container" onclick="this.classList.toggle('flipped')">
+                    <div class="card-inner">
+                        <div class="card-front border-released">
+                            <span class="status-pill status-complete">Released</span>
+                            <h3 class="text-xl font-bold text-cl-navy mb-2">Castlight Homepage</h3>
+                            <p class="text-gray-500 text-sm mb-4 italic">Jan 1, 2026</p>
+                            <div class="mt-auto text-cl-teal text-xs font-bold uppercase">Click to flip &rarr;</div>
+                        </div>
+                        <div class="card-back">
+                            <p class="text-sm leading-relaxed text-gray-600">Redesigned to be more personal and less cluttered. We use smart technology to show relevant health goals, cutting out noise so you can take action faster.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-container" onclick="this.classList.toggle('flipped')">
+                    <div class="card-inner">
+                        <div class="card-front border-released">
+                            <span class="status-pill status-complete">Released</span>
+                            <h3 class="text-xl font-bold text-cl-navy mb-2">Take Action: Reimagined</h3>
+                            <p class="text-gray-500 text-sm mb-4 italic">Jan 1, 2026</p>
+                            <div class="mt-auto text-cl-teal text-xs font-bold uppercase">Click to flip &rarr;</div>
+                        </div>
+                        <div class="card-back">
+                            <p class="text-sm leading-relaxed text-gray-600">Highlights your most urgent health tasks and personalized next steps in one simple view, keeping you moving toward long-term wellness milestones.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-container" onclick="this.classList.toggle('flipped')">
+                    <div class="card-inner">
+                        <div class="card-front border-released">
+                            <span class="status-pill status-complete">Released</span>
+                            <h3 class="text-xl font-bold text-cl-navy mb-2">Prism: Your Assistant</h3>
+                            <p class="text-gray-500 text-sm mb-4 italic">Jan 1, 2026</p>
+                            <div class="mt-auto text-cl-teal text-xs font-bold uppercase">Click to flip &rarr;</div>
+                        </div>
+                        <div class="card-back">
+                            <p class="text-sm leading-relaxed text-gray-600">An intelligent conversational assistant for instant answers about benefits. Prism seamlessly hands off to a human when specialized help is needed.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-container" onclick="this.classList.toggle('flipped')">
+                    <div class="card-inner">
+                        <div class="card-front border-released">
+                            <span class="status-pill status-complete">Released</span>
+                            <h3 class="text-xl font-bold text-cl-navy mb-2">Wellness Path</h3>
+                            <p class="text-gray-500 text-sm mb-4 italic">Jan 1, 2026</p>
+                            <div class="mt-auto text-cl-teal text-xs font-bold uppercase">Click to flip &rarr;</div>
+                        </div>
+                        <div class="card-back">
+                            <p class="text-sm leading-relaxed text-gray-600">A clear, step-by-step roadmap tailored to your specific health goals. Breaks down long-term condition management or fitness into simple achievements.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-container" onclick="this.classList.toggle('flipped')">
+                    <div class="card-inner">
+                        <div class="card-front border-released">
+                            <span class="status-pill status-complete">Released</span>
+                            <h3 class="text-xl font-bold text-cl-navy mb-2">Get Care: New Navigator</h3>
+                            <p class="text-gray-500 text-sm mb-4 italic">Feb 1, 2026</p>
+                            <div class="mt-auto text-cl-teal text-xs font-bold uppercase">Click to flip &rarr;</div>
+                        </div>
+                        <div class="card-back">
+                            <p class="text-sm leading-relaxed text-gray-600">Redesigned experience bringing doctor search and benefit programs together. Includes an interactive map to visually explore top-rated neighborhood providers.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- SECTION: ACTIVE IN BUILD -->
+        <div class="mb-24">
+            <div class="section-header">Active in Build</div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                
+                <div class="card-container" onclick="this.classList.toggle('flipped')">
+                    <div class="card-inner">
+                        <div class="card-front border-active">
+                            <span class="status-pill status-active">Development</span>
+                            <h3 class="text-lg font-bold text-cl-navy mb-2 leading-tight">Benefit: Coverage Glance</h3>
+                            <p class="text-gray-400 text-xs mt-auto">Summer 2026</p>
+                        </div>
+                        <div class="card-back">
+                            <p class="text-sm text-gray-600">A crystal-clear view of medical spending and deductibles, helping you manage your healthcare budget with total confidence.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-container" onclick="this.classList.toggle('flipped')">
+                    <div class="card-inner">
+                        <div class="card-front border-active">
+                            <span class="status-pill status-active">Development</span>
+                            <h3 class="text-lg font-bold text-cl-navy mb-2 leading-tight">Marketplace Storefront</h3>
+                            <p class="text-gray-400 text-xs mt-auto">Summer 2026</p>
+                        </div>
+                        <div class="card-back">
+                            <p class="text-sm text-gray-600">A one-stop shop for discovering benefit programs, tracking earned points, and redeeming rewards in one central hub.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-container" onclick="this.classList.toggle('flipped')">
+                    <div class="card-inner">
+                        <div class="card-front border-active">
+                            <span class="status-pill status-active">Development</span>
+                            <h3 class="text-lg font-bold text-cl-navy mb-2 leading-tight">New Challenges</h3>
+                            <p class="text-gray-400 text-xs mt-auto">Summer 2026</p>
+                        </div>
+                        <div class="card-back">
+                            <p class="text-sm text-gray-600">All-new challenge types and custom events created by your employer to track progress alongside your colleagues.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-container" onclick="this.classList.toggle('flipped')">
+                    <div class="card-inner">
+                        <div class="card-front border-active">
+                            <span class="status-pill status-active">Development</span>
+                            <h3 class="text-lg font-bold text-cl-navy mb-2 leading-tight">Oura Ring Sync</h3>
+                            <p class="text-gray-400 text-xs mt-auto">Summer 2026</p>
+                        </div>
+                        <div class="card-back">
+                            <p class="text-sm text-gray-600">Sync sleep, readiness, and activity data from Oura to receive personalized recommendations balancing rest and recovery.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- SECTION: IN DESIGN -->
+        <div>
+            <div class="section-header">Future Strategy</div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                
+                <div class="card-container h-48" onclick="this.classList.toggle('flipped')">
+                    <div class="card-inner">
+                        <div class="card-front border-design">
+                            <span class="status-pill status-next">Discovery</span>
+                            <h3 class="text-lg font-bold text-cl-navy leading-tight">Proactive Prism</h3>
+                            <p class="text-gray-400 text-xs mt-auto">Winter 2026</p>
+                        </div>
+                        <div class="card-back">
+                            <p class="text-sm text-gray-600 leading-relaxed">Prism will reach out with alerts about important milestones, care gaps, or ways to save money on your benefits.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-container h-48" onclick="this.classList.toggle('flipped')">
+                    <div class="card-inner">
+                        <div class="card-front border-design">
+                            <span class="status-pill status-next">Discovery</span>
+                            <h3 class="text-lg font-bold text-cl-navy leading-tight">Prism for Buyers</h3>
+                            <p class="text-gray-400 text-xs mt-auto">Winter 2026</p>
+                        </div>
+                        <div class="card-back">
+                            <p class="text-sm text-gray-600 leading-relaxed">Deep-dive support for "buy-up" benefits like specialized dental, vision, or supplemental insurance lines.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-container h-48" onclick="this.classList.toggle('flipped')">
+                    <div class="card-inner">
+                        <div class="card-front border-design">
+                            <span class="status-pill status-next">Discovery</span>
+                            <h3 class="text-lg font-bold text-cl-navy leading-tight">Marketplace Expansion</h3>
+                            <p class="text-gray-400 text-xs mt-auto">Winter 2026</p>
+                        </div>
+                        <div class="card-back">
+                            <p class="text-sm text-gray-600 leading-relaxed">Growing our storefront to include more services for mental health, fitness, and family care subscriptions.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="bg-white border-t border-gray-200 py-16 px-8">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+            <img src="https://www.castlighthealth.com/wp-content/themes/castlighthealth/assets/img/logo.svg" alt="Castlight Health" class="h-6 opacity-50">
+            <div class="flex gap-10 text-gray-400 text-xs font-bold uppercase tracking-widest">
+                <span>&copy; 2026 Castlight Health</span>
+                <a href="#" class="hover:text-cl-teal transition">Privacy</a>
+                <a href="#" class="hover:text-cl-teal transition">Terms</a>
+                <a href="#" class="hover:text-cl-teal transition">Security</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
